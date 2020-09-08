@@ -123,6 +123,29 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/Target1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Linked Service for pokuri storage",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "Target1",
+						"container": "pokuricontainer"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Linked Service for pokuri storage')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/TargetDataSet')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
